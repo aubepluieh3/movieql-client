@@ -36,6 +36,7 @@ const Title = styled.h1`
 const Subtitle = styled.h4`
   font-size: 35px;
   margin-bottom: 10px;
+  margin-right: 10px;
 `;
 
 const Image = styled.div`
@@ -46,6 +47,16 @@ const Image = styled.div`
   background-size: cover;
   background-position: center center;
   border-radius: 7px;
+`;
+const Header = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+const Btn = styled.button`
+  background-color: none;
+  border: none;
+  border-radius: 10px;
 `;
 
 export default function Movie() {
@@ -77,10 +88,12 @@ export default function Movie() {
     <Container>
       <Column>
         <Title>{loading ? "Loading..." : `${data.movie?.title}`}</Title>
-        <Subtitle>⭐️ {data?.movie?.rating}</Subtitle>
-        <button onClick={onClick}>
-          {data?.movie?.isLiked ? "Unlike" : "Like"}
-        </button>
+        <Header>
+          <Subtitle>⭐️ {data?.movie?.rating}</Subtitle>
+          <Btn onClick={onClick}>
+            {data?.movie?.isLiked ? "Unlike" : "Like"}
+          </Btn>
+        </Header>
       </Column>
       <Image bg={data?.movie?.medium_cover_image} />
     </Container>
